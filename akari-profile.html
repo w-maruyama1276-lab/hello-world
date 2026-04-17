@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akari Mizuno | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d5a4a;
+            --secondary: #e8b4bc;
+            --accent: #f4a261;
+            --bg-light: #faf8f5;
+            --bg-cream: #f5f0e8;
+            --text-dark: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --white: #ffffff;
+            --gradient-hero: linear-gradient(135deg, #fdf6f0 0%, #e8f5e9 50%, #f3e5f5 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 60px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 180, 188, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(45, 90, 74, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .profile-left {
+            text-align: center;
+            position: sticky;
+            top: 40px;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .avatar-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            top: 15px;
+            left: 15px;
+            animation: rotate-slow 20s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .name-en {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .nickname {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary) 0%, #f0c6cc 100%);
+            color: var(--text-dark);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .company-info {
+            text-align: left;
+            padding: 20px 0;
+            border-top: 1px solid var(--bg-cream);
+            border-bottom: 1px solid var(--bg-cream);
+            margin-bottom: 25px;
+        }
+
+        .company-name {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .quote {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--text-muted);
+            padding: 15px 20px;
+            background: var(--bg-cream);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: var(--secondary);
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            line-height: 1;
+        }
+
+        .profile-right {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--secondary) 0%, transparent 100%);
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #3d7a64 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .career-timeline {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .career-timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .timeline-highlight {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
+            padding-left: 10px;
+            border-left: 2px solid var(--bg-cream);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: var(--white);
+            border: 1px solid var(--bg-cream);
+            border-radius: 15px;
+            padding: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-color: var(--secondary);
+        }
+
+        .skill-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-name::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .skill-detail {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .skill-bar {
+            height: 4px;
+            background: var(--bg-cream);
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 2px;
+            transition: width 1s ease-out;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .hobby-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .hobby-card:nth-child(1):hover { border-color: var(--accent); }
+        .hobby-card:nth-child(2):hover { border-color: var(--primary); }
+        .hobby-card:nth-child(3):hover { border-color: var(--secondary); }
+
+        .hobby-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .hobby-card:nth-child(1) .hobby-icon { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); }
+        .hobby-card:nth-child(2) .hobby-icon { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); }
+        .hobby-card:nth-child(3) .hobby-icon { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); }
+
+        .hobby-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .hobby-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #3d7a64 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        .message-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .message-content {
+            font-size: 14px;
+            line-height: 1.9;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .message-content p {
+            margin-bottom: 12px;
+        }
+
+        .message-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .sns-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sns-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sns-link:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+                padding: 40px 30px;
+                gap: 40px;
+            }
+
+            .profile-left {
+                position: relative;
+                top: 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 30px 15px;
+            }
+
+            .profile-card {
+                padding: 30px 20px;
+                border-radius: 25px;
+            }
+
+            .avatar-wrapper {
+                width: 150px;
+                height: 150px;
+            }
+
+            .avatar {
+                font-size: 48px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="profile-card">
+                <div class="profile-left">
+                    <div class="avatar-wrapper">
+                        <div class="avatar-decoration"></div>
+                        <div class="avatar">あ</div>
+                    </div>
+                    <h1 class="name">水野 あかり</h1>
+                    <p class="name-en">Akari Mizuno</p>
+                    <span class="nickname">あかりん</span>
+                    <div class="company-info">
+                        <p class="company-name">株式会社グリーンテック</p>
+                        <p class="company-info" style="font-size: 13px; color: var(--text-muted); margin-top: 5px;">マーケティング部 / プランナー</p>
+                    </div>
+                    <p class="quote">まずやってみる。考えるのはそのあと。</p>
+                </div>
+
+                <div class="profile-right">
+                    <div class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">履</span>
+                            経歴
+                        </h2>
+                        <div class="career-timeline">
+                            <div class="timeline-item">
+                                <p class="timeline-year">出身</p>
+                                <p class="timeline-content">神奈川県横浜市</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-year">2022年 3月</p>
+                                <p class="timeline-content">青山学院大学 経営学部 卒業</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-year">2022年 4月</p>
+                                <p class="timeline-content">グリーンテック入社</p>
+                                <p class="timeline-highlight">1年目は営業アシスタントとしてスタート</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-year">2023年</p>
+                                <p class="timeline-content">マーケティング部に異動</p>
+                                <p class="timeline-highlight">SNS運用とイベント企画を担当</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">能</span>
+                            スキル
+                        </h2>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <p class="skill-name">SNS運用</p>
+                                <p class="skill-detail">Instagram / X 運用経験</p>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <p class="skill-name"> Canva</p>
+                                <p class="skill-detail">クリエイティブ制作</p>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <p class="skill-name">イベント企画</p>
+                                <p class="skill-detail">年間12本のセミナー企画</p>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <p class="skill-name">Python</p>
+                                <p class="skill-detail">データ集計に挑戦中</p>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">趣</span>
+                            趣味
+                        </h2>
+                        <div class="hobbies-grid">
+                            <div class="hobby-card">
+                                <div class="hobby-icon">☕</div>
+                                <p class="hobby-name">カフェ巡り</p>
+                                <p class="hobby-desc">月に10軒は行く<br>ラテアート写真好き</p>
+                            </div>
+                            <div class="hobby-card">
+                                <div class="hobby-icon">🏃</div>
+                                <p class="hobby-name">ランニング</p>
+                                <p class="hobby-desc">週末5km走る<br>目標はハーフマラソン</p>
+                            </div>
+                            <div class="hobby-card">
+                                <div class="hobby-icon">📚</div>
+                                <p class="hobby-name">読書</p>
+                                <p class="hobby-desc">ビジネス書多め<br>「イシューからはじめよ」</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="message-box">
+                            <h3 class="message-title">
+                                <span>💬</span> ひとこと
+                            </h3>
+                            <div class="message-content">
+                                <p>テクノロジーの力でマーケティングをもっと面白くしたいと思っています。</p>
+                                <p>最近AIツールに興味があり、業務効率化チャレンジ中です。趣味のカフェ巡りで得たリアルな消費者視点を仕事にも活かしています。</p>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">#マーケティング</span>
+                                <span class="tag">#SNS運用</span>
+                                <span class="tag">#AI活用</span>
+                                <span class="tag">#グリーンテック</span>
+                            </div>
+                            <div class="sns-links">
+                                <a class="sns-link" title="Instagram">📷</a>
+                                <a class="sns-link" title="X (Twitter)">𝕏</a>
+                                <a class="sns-link" title="Email">✉</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Akari Mizuno. All rights reserved.</p>
+    </footer>
+</body>
+</html>
